@@ -43,6 +43,8 @@
 @media (max-width: 543px) {
   .mobile-menu-toggle {
     display: block;
+    margin-left: auto;
+    order: 999;
   }
 }
 
@@ -79,6 +81,13 @@
 
 @media (min-width: 544px) {
   #linksContainer.argyle-navlinks2-menu {
+    display: none !important;
+  }
+}
+
+/* Hide contact button on mobile homepage */
+@media (max-width: 767px) {
+  .argyle-contact-mobile .contact-modal .theme-btn {
     display: none !important;
   }
 }
