@@ -81,6 +81,13 @@
               </h1>
             </div>
             <div class="flex-0" style="width: 16px"></div>
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
   <div
     class="flex-1 flex-row"
     data-site-editable-id="navpages"
@@ -705,5 +712,35 @@
   </div>
 </footer>
   </div>
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('linksContainer');
+      if (menu) {
+        menu.classList.toggle('show');
+      }
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('linksContainer');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (menu && toggle && !menu.contains(event.target) && !toggle.contains(event.target)) {
+        menu.classList.remove('show');
+      }
+    });
+    
+    // Close menu when clicking a menu link
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuLinks = document.querySelectorAll('#linksContainer .theme-navlinks2-item-link');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          const menu = document.getElementById('linksContainer');
+          if (menu) {
+            menu.classList.remove('show');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
